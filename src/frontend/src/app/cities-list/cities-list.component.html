@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div id="custom-search-input">
+      <div class="input-group col-md-12" style="text-align: center">
+        <input type="text" class="search-query form-control" placeholder="Search City" name="name"
+               (keydown.enter)="getCities(1)"
+               [(ngModel)]="name"/>
+        <span class="input-group-btn">
+            <button class="btn btn-outline-primary" type="submit"
+                    (click)="getCities(1)">Search</button>
+            <button class="btn btn-outline-secondary" type="reset"
+                    (click)="clearSearchField(); getCities(1);">Reset</button>
+          </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <div>&nbsp;</div>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>City Name</th>
+      <th>Picture URL</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let e of cities | paginate: { itemsPerPage: pageSize, currentPage: page, totalItems: totalItems }">
+      <td>{{e.id}}</td>
+      <td>{{e.name}}</td>
+      <td><img src='{{e.pictureUrl}}' alt="Sorry, Image not found" width="50" height="50" style="vertical-align:top"></td>
+
+      <td>
+        <a title='Click to edit' (click)="editDetails(e.id)" target='_blank' class='btn btn-info btn-md'>
+          <span class='glyphicon glyphicon-user'></span> Edit
+        </a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<!--Including the pagination control.-->
+<div class="text-right">
+  <pagination-controls (pageChange)="getCities($event)"></pagination-controls>
+</div>

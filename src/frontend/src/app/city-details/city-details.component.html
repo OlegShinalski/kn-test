@@ -1,0 +1,54 @@
+<div class="container">
+  <form class="card" [formGroup]="form" (ngSubmit)="save()" (ngReset)="cancel()">
+    <h1>City details</h1>
+
+<!--    <div class="form-control">-->
+    <div>
+      <label>Id</label>
+      <p>{{id}}</p>
+    </div>
+
+    <div>
+      <label>City Name</label>
+      <input type="text" formControlName="cityName" placeholder="City Name" >
+      <div
+        *ngIf="form.get('cityName').invalid && form.get('cityName').touched"
+        class="validation">
+        <small *ngIf="form.get('cityName').errors.required">
+          City name couldn't be empty
+        </small>
+        <small *ngIf="form.get('cityName').errors.maxlength">
+          City name coudn't be more than {{form.get('cityName').errors.maxlength.requiredLength}} chars
+        </small>
+      </div>
+    </div>
+
+<!--    <div class="form-control">-->
+    <div>
+      <label>City Picture URL</label>
+      <input type="text" formControlName="pictureUrl" placeholder="City picture URL">
+      <div
+        *ngIf="form.get('pictureUrl').invalid && form.get('pictureUrl').touched"
+        class="validation">
+        <small *ngIf="form.get('pictureUrl').errors.required">
+          Picture URL couldn't be empty
+        </small>
+        <small *ngIf="form.get('pictureUrl').errors.email">
+          Enter correct URL
+        </small>
+      </div>
+    </div>
+
+    <div>
+      <p *ngIf="error" class="error">
+        Server Error : {{error}}
+      </p>
+    </div>
+
+    <hr/>
+    <div>
+      <button type="submit" [disabled]="form.invalid" class='btn btn-info btn-md'>Save</button>&nbsp;
+      <button (click)="cancel()" type="button" class='btn btn-info btn-md'>Cancel</button>
+    </div>
+  </form>
+</div>

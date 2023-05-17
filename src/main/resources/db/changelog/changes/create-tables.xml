@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet author="admin" id="1">
+        <createTable tableName="city">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="picture_url" type="VARCHAR(1000)"/>
+        </createTable>
+        <createSequence sequenceName="CITY_SEQ" minValue="1" incrementBy="50" />
+        <rollback>
+            <dropTable tableName="person"/>
+            <dropSequence sequenceName="CITY_SEQ" />
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>
+
+<!--<databaseChangeLog-->
+<!--xmlns="http://www.liquibase.org/xml/ns/dbchangelog"-->
+<!--xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">-->
+
+<!--<include relativeToChangelogFile="true" file="knorganization_0.35.0.sql"/>-->
+<!--<include relativeToChangelogFile="true" file="1744.sql"/>-->
+<!--<include relativeToChangelogFile="true" file="pricing_0.35.0.sql"/>-->
+<!--<include relativeToChangelogFile="true" file="shipment_0.35.0.sql"/>-->
+<!--<include relativeToChangelogFile="true" file="transporttrip_0.35.0.sql"/>-->
+<!--<include relativeToChangelogFile="true" file="invoicing_0.35.0.sql"/>-->
+<!--<include relativeToChangelogFile="true" file="148.sql"/>-->
+<!--<include relativeToChangelogFile="true" file="1334.sql"/>-->
+<!--<include relativeToChangelogFile="true" file="938.sql"/>-->
+
+<!--</databaseChangeLog>-->
