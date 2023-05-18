@@ -6,7 +6,7 @@ The fromnend is written on Angular.
 ## Prerequisites
 - **NodeJS** - https://nodejs.org/en/
 - **IntelliJ IDEA** - https://www.jetbrains.com/idea/
-- **JDK** - https://www.oracle.com/java/technologies/javase-downloads.html. In this project is used Java 17 (Amazon Correto 17.0.7 distibution).
+- **JDK** - In this project is used Java 17 (Amazon Correto 17.0.7 distibution).
 
 ## Application Structure
 ### Back-end
@@ -40,7 +40,7 @@ The client project is stored in the `frontend\` directory.
 - `city.service.ts` contains methods for back-end communication.
 
 ## Installing & Running 
-1. Clone this repo https://github.com/puchkova/contacts.git
+1. Clone this repo https://github.com/OlegShinalski/kn-test.git
 
 2. Import project into Your IDE, build and use your IDE `Run` commant to run the server application
 
@@ -50,7 +50,7 @@ The client project is stored in the `frontend\` directory.
 
 4. Go to the `frontend` directory in your terminal and run the `npm install` command to install node modules 
 
-5. Run the `nmp start` command to run the client application
+5. Run the `nmp start` command to run the client application. Re: on one of computers was reqired to set environment variable set NODE_OPTIONS=--openssl-legacy-provider. (Seems, due to some OpenSSL & NodeJS version compatibility)
 
 6. Now the application is available on http://localhost:4200/
 
